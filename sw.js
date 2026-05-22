@@ -1,7 +1,9 @@
-const CACHE_NAME = 'cosmic-clock-v1';
+const CACHE_NAME = 'cosmic-time-terminal-v1';
 const ASSETS = [
   'index.html',
-  'manifest.json'
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png'
 ];
 
 // Force immediate background activation parameters
