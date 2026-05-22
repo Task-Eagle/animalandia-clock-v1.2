@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cosmic Clock Icon Generator</title>
+    <style>
+        body { background: #0f0c29; color: #ffffff; font-family: sans-serif; text-align: center; padding: 50px; }
+        .btn { background: #6c5ce7; color: white; border: none; padding: 15px 30px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin: 10px; box-shadow: 0 0 15px rgba(108, 92, 231, 0.5); }
+        .btn:hover { background: #a29bfe; }
+        canvas { display: none; }
+    </style>
+</head>
+<body>
+    <h1>⏰ Cosmic Clock Icon Generator</h1>
+    <p>Click both buttons below to generate and download your PWA asset files!</p>
+    
+    <button class="btn" onclick="generateIcon(192, 'icon-192.png')">Download icon-192.png</button>
+    <button class="btn" onclick="generateIcon(512, 'icon-512.png')">Download icon-512.png</button>
+    
+    <canvas id="iconCanvas"></canvas>
+
+    <script>
+        function generateIcon(size, filename) {
+            const canvas = document.getElementById('iconCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+
+            // 1. Deep Space Gradient Background
+            const gradient = ctx.createRadialGradient(size/2, size/2, 10, size/2, size/2, size * 0.6);
+            gradient.addColorStop(0, '#1b1445');
+            gradient.addColorStop(0.6, '#0f0c29');
+            gradient.addColorStop(1, '#050510');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // 2. Neon Outer Ring
+            ctx.strokeStyle = '#ff7675';
+            ctx.lineWidth = size * 0.05;
+            ctx.shadowBlur = size * 0.04;
+            ctx.shadowColor = '#ff7675';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size * 0.35, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // 3. Futuristic Clock Hands
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = size * 0.04;
+            ctx.lineCap = 'round';
+            ctx.shadowColor = '#ffffff';
+            
+            // Hour Hand
+            ctx.beginPath();
+            ctx.moveTo(size/2, size/2);
+            ctx.lineTo(size/2, size * 0.32);
+            ctx.stroke();
+
+            // Minute Hand (Supernova Orange Accent)
+            ctx.strokeStyle = '#00ffcc';
+            ctx.shadowColor = '#00ffcc';
+            ctx.beginPath();
+            ctx.moveTo(size/2, size/2);
+            ctx.lineTo(size * 0.65, size/2);
+            ctx.stroke();
+
+            // Center Pin
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size * 0.03, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Trigger Automatic Download
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
