@@ -3,7 +3,7 @@
   "short_name": "CosmicClock",
   "description": "A high-tech, space-themed clock ecosystem featuring Alarms, World Clock tracking, Timers, and a precise Stopwatch terminal.",
   "start_url": "index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#0f0c29",
   "theme_color": "#ff7675",
   "orientation": "portrait",
@@ -20,5 +20,15 @@
       "type": "image/png",
       "purpose": "any"
     }
+  ],
+  "id": "AnimalandiaClock",
+  "lang": "en",
+  "dir": "auto",
+  "display_override": [
+    "window-controls-overlay",
+    "fullscreen"
+  ],
+  "categories": [
+    "utilities"
   ]
 }
